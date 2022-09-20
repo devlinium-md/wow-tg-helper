@@ -1,48 +1,17 @@
-import psycopg2
-conn = psycopg2.connect(dbname='django', user='django',
-                        password='6552', host='127.0.0.1', port='5432')
+import mysql.connector
 
 
-def active():
-    cursor = conn.cursor()
-    cursor.execute(\
-        "SELECT main_page_work_request.id, name, phone_number, mail, commentary, request_date, work_name \
-        FROM main_page_work_request, main_page_work_type \
-        WHERE main_page_work_request.work_name_id = main_page_work_type.id \
-        AND is_done = FALSE AND is_deleted = FALSE \
-        ORDER BY main_page_work_request.id ASC")
-    all_list = []
-    records = cursor.fetchall()
-    for element in records:
-        all_list.append(element)
+def apply_register(pers_name, pers_surname, pers_phone, pers_value, pers_photo, pers_user_id):
+    connection = mysql.connector.connect(host='localhost',
+                                         database='telegram',
+                                         user='telegram_bot',
+                                         password='bot_telegram',
+                                         auth_plugin='mysql_native_password')
+    cursor = connection.cursor()
+    print(pers_name, pers_surname, pers_phone, pers_value, pers_photo, pers_user_id)
+    mysql_insert_query = """INSERT INTO apply_table (name, surname, phone, value, photo, user_id) VALUES (%s, %s, %s, %s, %s, %s) """
+    data = (pers_name, pers_surname, pers_phone, pers_value, pers_photo, pers_user_id)
+    cursor.execute(mysql_insert_query, data)
+    connection.commit()
     cursor.close()
-    return all_list
-
-
-def done(request_id):
-    cursor = conn.cursor()
-    cursor.execute(\
-        "UPDATE main_page_work_request SET is_done = TRUE WHERE id = %s", (request_id,))
-    conn.commit()
-    cursor.close()
-
-
-def delete(request_id):
-    cursor = conn.cursor()
-    cursor.execute(\
-        "UPDATE main_page_work_request SET is_deleted = TRUE WHERE id = %s", (request_id, ))
-    conn.commit()
-    cursor.close()
-
-
-def users():
-    cursor = conn.cursor()
-    cursor.execute( \
-        "SELECT tg_id FROM main_page_tg_user")
-    all_list = []
-    records = cursor.fetchall()
-    for element in records:
-        all_list.append(element[0])
-    cursor.close()
-    return all_list
-
+    connection.close()
