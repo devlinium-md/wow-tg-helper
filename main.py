@@ -1,12 +1,6 @@
-import operations as op
 import keyboards as kb
-# import db_operations as db
 import texts
-import time
-import logging
-import telebot
 from credentials import bot
-from threading import Thread
 
 
 
@@ -26,7 +20,7 @@ apply_phase = 0
 @bot.message_handler(commands=['start'])
 def start_message(message):
     ApplyForm.id = message.chat.id
-    bot.send_message(chat_id=message.chat.id, text='Главное Меню', reply_markup=kb.menu)
+    bot.send_message(chat_id=message.chat.id, text='Main menu', reply_markup=kb.menu)
 
 
 @bot.message_handler(content_types=['text'])
@@ -72,29 +66,20 @@ def input_text(message):
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
     global apply_phase
-    if call.data == "contact":
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=texts.contact)
+    # Run WoW client from launcher
+    if call.data == "run_wow":
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=texts.run_wow)
+        bot.send_message(chat_id=call.message.chat.id, text='Main Menu', reply_markup=kb.menu)
+    elif call.data == "screenshot":
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=texts.screenshot)
+        bot.send_photo(chat_id=call.message.chat.id, photo=open("/images/launcher.png", "rb"))
         bot.send_message(chat_id=call.message.chat.id, text='Главное Меню', reply_markup=kb.menu)
-    elif call.data == "pay":
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=texts.pay)
-        bot.send_message(chat_id=call.message.chat.id, text='Главное Меню', reply_markup=kb.menu)
-    elif call.data == "apply":
-        apply_phase = 1
+    elif call.data == "no_afk":
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                              text="Введите ваше имя так как оно указано в паспорте", reply_markup=kb.reset)
+                              text="No AFK menu", reply_markup=kb.no_afk_menu)
     elif call.data == "main_menu":
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Главное меню",
                               reply_markup=kb.menu)
-    elif call.data == "apply_yes":
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                              text="Отправьте её сюда",
-                              reply_markup=kb.menu)
-        apply_phase = 6
-    elif call.data == "apply_no":
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                              text="К сожалению без подтверждающего документа мы вам не можем помочь",
-                              reply_markup=kb.menu)
-        apply_phase = 0
 
 
 @bot.message_handler(content_types=["photo"])
