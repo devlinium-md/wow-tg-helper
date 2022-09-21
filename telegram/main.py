@@ -8,7 +8,6 @@ import telebot
 from credentials import bot
 from threading import Thread
 
-# bot = telebot.TeleBot('1923440472:AAEvakYRWaiPnWuogAkSdmyU83tEsLqjIFo')
 
 
 class ApplyForm:
