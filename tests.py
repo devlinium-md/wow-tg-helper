@@ -1,3 +1,8 @@
-import os
+import datetime
+import time
 
-os.startfile("C:\Program Files (x86)\Battle.net\Battle.net Launcher.exe")
+start = datetime.datetime.now() + datetime.timedelta(0, 20)
+time.sleep(2)
+end = datetime.datetime.now()
+
+print(str(start) + '\n' + str(end))
