@@ -21,3 +21,7 @@ def start_wow():
         elif datetime.datetime.now() > start_time:
             return "not ok"
 
+
+def screenshot():
+    return pyautogui.screenshot()
+

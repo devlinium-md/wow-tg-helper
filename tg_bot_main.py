@@ -21,13 +21,13 @@ def callback_worker(call):
         bot.send_message(chat_id=call.message.chat.id, text='Main Menu', reply_markup=kb.menu)
     elif call.data == "screenshot":
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=texts.screenshot)
-        bot.send_photo(chat_id=call.message.chat.id, photo=open("/images/launcher.png", "rb"))
-        bot.send_message(chat_id=call.message.chat.id, text='Главное Меню', reply_markup=kb.menu)
+        bot.send_photo(chat_id=call.message.chat.id, photo=run.screenshot())
+        bot.send_message(chat_id=call.message.chat.id, text='Main Menu', reply_markup=kb.menu)
     elif call.data == "no_afk":
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                               text="No AFK menu", reply_markup=kb.no_afk_menu)
     elif call.data == "main_menu":
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Главное меню",
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="Main Menu",
                               reply_markup=kb.menu)
 
 
