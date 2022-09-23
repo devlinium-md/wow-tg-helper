@@ -17,7 +17,6 @@ def callback_worker(call):
     # Run WoW client from launcher
     if call.data == "run_wow":
         message = run.start_wow()
-        # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=texts.run_wow)
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)
         bot.send_message(chat_id=call.message.chat.id, text='Main Menu', reply_markup=kb.menu)
     elif call.data == "screenshot":
