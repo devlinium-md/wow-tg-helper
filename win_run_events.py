@@ -20,9 +20,9 @@ def start_wow():
             btn_position = pyautogui.center(btn)
             time.sleep(1)
             pyautogui.click(btn_position)
-            return "ok"
+            return "WoW is starting"
         elif datetime.datetime.now() > start_time:
-            return "not ok"
+            return "Something went wrong"
 
 
 def screenshot():
