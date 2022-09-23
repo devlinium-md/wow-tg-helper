@@ -1,8 +1,32 @@
-import datetime
-import time
+import threading
 
-start = datetime.datetime.now() + datetime.timedelta(0, 20)
-time.sleep(2)
-end = datetime.datetime.now()
+l = 1
 
-print(str(start) + '\n' + str(end))
+
+def hello():
+    while True:
+        print('Hello')
+        if l == 0:
+            break
+
+
+event = threading.Thread(target=hello)
+
+
+def start():
+    event.start()
+
+
+def end():
+    event.join()
+
+
+a = input()
+while True:
+    m = input()
+    match m:
+        case '1':
+            start()
+        case '2':
+            l = 0
+            end()
