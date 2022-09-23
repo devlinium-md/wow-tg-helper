@@ -48,6 +48,6 @@ def callback_worker(call):
         message = "Enter is pressed"
         run.enter()
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)
-        bot.send_message(chat_id=call.message.chat.id, text="Main Menu", reply_markup=kb.main_menu)
+        bot.send_message(chat_id=call.message.chat.id, text="Main Menu", reply_markup=kb.menu)
 
 bot.polling()
