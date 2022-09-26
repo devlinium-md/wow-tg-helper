@@ -39,6 +39,8 @@ try:
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)
             bot.send_message(chat_id=call.message.chat.id, text="No AFK menu", reply_markup=kb.no_afk_menu2)
         elif call.data == "stop_no_afk":
+            bot.send_message(chat_id=call.message.chat.id, text="No AFK mode will be disabled on next Jump attempt. "
+                                                                "Please wait")
             message = run.stop_afk()
             afk_mode = 0
             bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)

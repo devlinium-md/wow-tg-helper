@@ -1,10 +1,11 @@
+import datetime
+import os
+import threading
+import time
+
 import keyboard
 import pyautogui
-import time
-import os
-import datetime
-import cv2
-import threading
+
 import move_patterns as mv
 
 
@@ -28,13 +29,16 @@ def start_wow():
 def screenshot():
     return pyautogui.screenshot()
 
+
 l = 1
+
+
 def no_afk_mode():
     while True:
-        time.sleep(mv.randrange(0, 240))
-        mv.afk()
         if l == 0:
             break
+        time.sleep(mv.randrange(0, 120))
+        mv.afk()
 
 
 event = threading.Thread(target=no_afk_mode)
