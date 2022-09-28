@@ -93,4 +93,8 @@ try:
 except Exception:
     pass
 
-bot.polling()
+
+try:
+    bot.polling()
+except Exception:
+    bot.polling()
