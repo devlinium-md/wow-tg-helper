@@ -11,7 +11,11 @@ import move_patterns as mv
 
 def start_wow():
     import os
-    os.system("taskkill /im WowClassic.exe")
+    try:
+        os.system("ECHO OFF")
+        os.system("taskkill /im WowClassic.exe")
+    except Exception:
+        pass
     start_time = datetime.datetime.now() + datetime.timedelta(0, 20)
     try:
         os.startfile("C:\Program Files (x86)\Battle.net\Battle.net Launcher.exe")

@@ -2,6 +2,10 @@ import tg_keyboards as kb
 import texts
 import telebot
 import win_run_events as run
+import logging
+
+
+logging.basicConfig(filename='app.log', filemode='w', format='%(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S')
 
 bot = telebot.TeleBot(str(open("api.key", "r").readline()))
 afk_mode = 0
