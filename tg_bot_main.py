@@ -33,19 +33,23 @@ try:
                     bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                           text="Screenshot Menu", reply_markup=kb.screenshot_menu1)
             case "screenshot_on":
-                text_in_message = run.start_afk()
-                scr_mode = 1
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
-                                      text=text_in_message)
-                bot.send_message(chat_id=call.message.chat.id, text="No AFK menu", reply_markup=kb.no_afk_menu1)
+                bot.send_message(chat_id=call.message.chat.id, text="Пока ещё не работает. Не нажимай!!!",
+                                 reply_markup=kb.main_menu)
+                # text_in_message = run.start_afk()
+                # scr_mode = 1
+                # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
+                #                       text=text_in_message)
+                # bot.send_message(chat_id=call.message.chat.id, text="No AFK menu", reply_markup=kb.no_afk_menu1)
             case "screenshot_off":
-                bot.send_message(chat_id=call.message.chat.id,
-                                 text="No AFK mode will be disabled on next Jump attempt. "
-                                      "Please wait")
-                message = run.stop_afk()
-                scr_mode = 0
-                bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)
-                bot.send_message(chat_id=call.message.chat.id, text="No AFK menu", reply_markup=kb.no_afk_menu0)
+                bot.send_message(chat_id=call.message.chat.id, text="Пока ещё не работает. Не нажимай!!!",
+                                 reply_markup=kb.main_menu)
+                # bot.send_message(chat_id=call.message.chat.id,
+                #                  text="No AFK mode will be disabled on next Jump attempt. "
+                #                       "Please wait")
+                # message = run.stop_afk()
+                # scr_mode = 0
+                # bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text=message)
+                # bot.send_message(chat_id=call.message.chat.id, text="No AFK menu", reply_markup=kb.no_afk_menu0)
             case "screenshot":
                 bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id,
                                       text=texts.screenshot)

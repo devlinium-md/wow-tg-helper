@@ -47,6 +47,12 @@ def screenshot():
     return img
 
 
+
+# def screenshots_auto_on():
+
+
+
+
 def no_afk_mode():
     while True:
         if stopper_clicker == 0:
