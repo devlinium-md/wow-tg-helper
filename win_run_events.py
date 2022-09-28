@@ -27,7 +27,11 @@ def start_wow():
 
 
 def screenshot():
-    return pyautogui.screenshot()
+    try:
+        return pyautogui.screenshot()
+    except Exception:
+        img = open("")
+        return ""
 
 
 l = 1
