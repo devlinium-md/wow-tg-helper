@@ -30,8 +30,8 @@ def screenshot():
     try:
         return pyautogui.screenshot()
     except Exception:
-        img = open("")
-        return ""
+        img = open("images/error.png", "r")
+        return img
 
 
 l = 1
