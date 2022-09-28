@@ -16,12 +16,17 @@ def start_wow():
     except Exception:
         pass
     while True:
-        btn = pyautogui.locateOnScreen('images/wow_button_ru.png', confidence=0.5)
+        btn = pyautogui.locateOnScreen('images/wotlk_button.png', confidence=0.5)
         if btn is not None:
             btn_position = pyautogui.center(btn)
             time.sleep(1)
             pyautogui.click(btn_position)
-            return "WoW is starting"
+            btn = pyautogui.locateOnScreen('images/wow_button_ru.png', confidence=0.5)
+            if btn is not None:
+                btn_position = pyautogui.center(btn)
+                time.sleep(1)
+                pyautogui.click(btn_position)
+                return "WoW is starting"
         elif datetime.datetime.now() > start_time:
             return "Something went wrong"
 
