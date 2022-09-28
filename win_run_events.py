@@ -8,6 +8,8 @@ import pyautogui
 
 import move_patterns as mv
 
+stopper_clicker = 1
+
 
 def start_wow():
     import os
@@ -45,14 +47,13 @@ def screenshot():
     return img
 
 
-l = 1
-
-
 def no_afk_mode():
     while True:
-        if l == 0:
+        if stopper_clicker == 0:
             break
         time.sleep(mv.randrange(0, 120))
+        if stopper_clicker == 0:
+            break
         mv.afk()
 
 
@@ -65,8 +66,8 @@ def start_afk():
 
 
 def stop_afk():
-    global l
-    l = 0
+    global stopper_clicker
+    stopper_clicker = 0
     event.join()
     return "No AFK mode is OFF"
 

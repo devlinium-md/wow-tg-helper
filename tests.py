@@ -1,12 +1,12 @@
 import threading
 
-l = 1
+stopper_clicker = 1
 
 
 def hello():
     while True:
         print('Hello')
-        if l == 0:
+        if stopper_clicker == 0:
             break
 
 
@@ -28,5 +28,5 @@ while True:
         case '1':
             start()
         case '2':
-            l = 0
+            stopper_clicker = 0
             end()
