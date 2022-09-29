@@ -7,9 +7,12 @@ import keyboard
 import pyautogui
 import os
 import move_patterns as mv
+import telebot
 
 stopper_clicker = 1
 disconnected = False
+bot = telebot.TeleBot(str(open("api.key", "r").readline()))
+user = str(open("users.conf", "r").readline())
 
 
 def start_wow_simple():
@@ -46,7 +49,7 @@ def checker_agent():
         if disconnected is True:
             start_wow_simple()
             disconnected = False
-            print("Beda")
+            bot.send_message(chat_id=user, text="You've been disconnected. Restarting WoW!!!!")
 
 
 def is_disconnected():
