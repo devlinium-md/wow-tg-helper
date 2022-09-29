@@ -2,7 +2,7 @@ import datetime
 import os
 import threading
 import time
-
+import images
 import keyboard
 import pyautogui
 
@@ -24,12 +24,12 @@ def start_wow():
     except Exception:
         pass
     while True:
-        btn = pyautogui.locateOnScreen('images/wotlk_button.png', confidence=0.5)
+        btn = pyautogui.locateOnScreen(images.wotlk_button, confidence=0.5)
         if btn is not None:
             btn_position = pyautogui.center(btn)
             time.sleep(2)
             pyautogui.click(btn_position)
-            btn = pyautogui.locateOnScreen('images/wow_button_ru.png', confidence=0.5)
+            btn = pyautogui.locateOnScreen(images.wow_button, confidence=0.5)
             if btn is not None:
                 btn_position = pyautogui.center(btn)
                 time.sleep(2)
@@ -43,7 +43,7 @@ def screenshot():
     try:
         img = pyautogui.screenshot()
     except Exception:
-        img = open("images/error.png", "rb")
+        img = open(images.error, "rb")
     return img
 
 

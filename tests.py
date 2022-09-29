@@ -1,32 +1,11 @@
-import threading
+import time
 
-stopper_clicker = 1
+import pyautogui
 
-
-def hello():
-    while True:
-        print('Hello')
-        if stopper_clicker == 0:
-            break
-
-
-event = threading.Thread(target=hello)
-
-
-def start():
-    event.start()
-
-
-def end():
-    event.join()
-
-
-a = input()
+file = "images/disconect_fhd.jpeg"
 while True:
-    m = input()
-    match m:
-        case '1':
-            start()
-        case '2':
-            stopper_clicker = 0
-            end()
+    result = pyautogui.locateOnScreen(file, confidence=0.2)
+    if result is not None:
+        print("ok")
+        time.sleep(0.5)
+    result = None
