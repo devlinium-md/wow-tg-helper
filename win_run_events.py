@@ -45,12 +45,13 @@ def checker_agent():
         disconnected = is_disconnected()
         if disconnected is True:
             start_wow_simple()
+            disconnected = False
             print("Beda")
 
 
 def is_disconnected():
     while True:
-        result = pyautogui.locateOnScreen(images.disconect, confidence=0.3)
+        result = pyautogui.locateOnScreen(images.disconect, confidence=0.5)
         if result is not None:
             return True
         time.sleep(1)
