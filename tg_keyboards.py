@@ -2,7 +2,9 @@ import telebot
 
 # Button library
 
-run_wow = telebot.types.InlineKeyboardButton(text='Run WoW', callback_data='run_wow')
+run_wow_menu_call = telebot.types.InlineKeyboardButton(text='Run WoW Menu', callback_data='run_wow_menu_call')
+run_wow_simple = telebot.types.InlineKeyboardButton(text='Simple Run', callback_data='run_wow_simple')
+run_wow_auto = telebot.types.InlineKeyboardButton(text="Automated Run", callback_data='run_wow_auto')
 screenshot = telebot.types.InlineKeyboardButton(text="Take screenshot", callback_data='screenshot')
 screenshot_menu = telebot.types.InlineKeyboardButton(text="Screenshot Menu", callback_data='screenshot_menu')
 no_afk = telebot.types.InlineKeyboardButton(text="No AFK mode", callback_data='no_afk')
@@ -18,7 +20,10 @@ screenshot_off = telebot.types.InlineKeyboardButton(text="DISABLE auto", callbac
 # Menu library
 
 menu = telebot.types.InlineKeyboardMarkup()
-menu.add(run_wow, screenshot_menu, no_afk)
+menu.add(run_wow_menu_call, screenshot_menu, no_afk)
+
+run_wow_menu = telebot.types.InlineKeyboardMarkup()
+run_wow_menu.add(run_wow_simple, run_wow_auto, main_menu)
 
 screenshot_menu0 = telebot.types.InlineKeyboardMarkup()
 screenshot_menu0.add(screenshot, screenshot_on, main_menu)

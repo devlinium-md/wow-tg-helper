@@ -1,11 +1,5 @@
-import time
-
-import pyautogui
-
-file = "images/disconect_fhd.jpeg"
-while True:
-    result = pyautogui.locateOnScreen(file, confidence=0.2)
-    if result is not None:
-        print("ok")
-        time.sleep(0.5)
-    result = None
+def checker_agent():
+    result = True
+    if result is True:
+        from tg_bot_main import disconnect_alert
+        disconnect_alert = "Error"
